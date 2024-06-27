@@ -4,7 +4,7 @@ app_name = 'meal'
 
 urlpatterns = [
     path('',meals,name='meals'),
-    # path('crete-countries/',create_countries),
+    path('crete-countries/',create_countries),
     path('crete-meal/',create_meal),
     path('<slug:region>/',meals,name='meal_by_region'),
     path('like-post/<int:post_id>/', like_post, name='like_post'),
