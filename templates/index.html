@@ -1,0 +1,232 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load video_tags %}
+
+
+{% block content %}
+    
+
+    {% comment %} should add special objects to this section {% endcomment %}
+
+    <!-- ****** Welcome Post Area Start ****** -->
+    <section class="welcome-post-sliders owl-carousel">
+
+        {% for fruit in most_viwed_fruits %}
+            <!-- Single Slide -->
+            <div class="welcome-single-slide">
+                <!-- Post Thumb -->
+                <img src="{{ fruit.imageURL }}" alt="{{ fruit.name }}">
+                <!-- Overlay Text -->
+                <div class="project_title">
+                    <div class="post-date-commnents d-flex">
+                        <a href="{{ fruit.get_absolute_url }}">{{ fruit.created_time|date:"F d, Y" }}</a>
+
+                        <a href="{{ fruit.get_absolute_url }}">{% count_comments fruit %} Comment</a>
+                    </div>
+                    <a href="{{ fruit.get_absolute_url }}">
+                        <h5>{{ fruit.name }}</h5>
+                        <p>{{ fruit.description | truncatechars:50 }}</p>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </section>
+    <!-- ****** Welcome Area End ****** -->
+
+    <!-- ****** Categories Area Start ****** -->
+    <section class="categories_area clearfix" id="about">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
+                        <img src="{% static 'img/catagory-img/veg.jpg' %}" alt="">
+                        <div class="catagory-title">
+                            <a href="{% url 'vegetable:vegetables' %}">
+                                <h5>Vegetables</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
+                        <img src="{% static 'img/catagory-img/meal3.jpg' %}" alt="">
+                        <div class="catagory-title">
+                            <a href="{% url 'meal:meals' %}">
+                                <h5>Meals</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
+                        <img src="{% static 'img/catagory-img/fruit.jpg' %}" alt="">
+                        <div class="catagory-title">
+                            <a href="{% url 'fruit:fruits' %}">
+                                <h5>Fruits</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ****** Categories Area End ****** -->
+
+    <!-- ****** Blog Area Start ****** -->  
+    <section class="blog_area section_padding_0_80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="row">
+                        {% for meal in most_viwed_meals %}
+                            {% if forloop.counter < 5 %}
+                                <!-- Single Post -->
+                                <div class="col-12 col-md-6">
+                                    <div class="single-post wow fadeInUp" data-wow-delay=".4s">
+                                        <!-- Post Thumb -->
+                                        <div class="post-thumb">
+                                            <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                                        </div>
+                                        <!-- Post Content -->
+                                        <div class="post-content">
+                                            <div class="post-meta d-flex">
+                                                <div class="post-author-date-area d-flex">
+                                                    <!-- Post Author -->
+                                                    <div class="post-author">
+                                                        <p>{{ meal.author }}</p>
+                                                    </div>
+                                                    <!-- Post Date -->
+                                                    <div class="post-date">
+                                                        <p>{{ meal.created_time|date:"F d, Y" }}</p>
+                                                    </div>
+                                                </div>
+                                                <!-- Post Comment & Share Area -->
+                                                <div class="post-comment-share-area d-flex">
+                                                    <!-- Post Favourite -->
+                                                    <div class="post-favourite">
+                                                        <p><i class="fa fa-heart-o" aria-hidden="true"></i> {{ meal.like }}</p>
+                                                    </div>
+                                                    <!-- Post Comments -->
+                                                    <div class="post-comments">
+                                                        <p><i class="fa fa-comment-o" aria-hidden="true"></i> {% count_comments meal %}</p>
+                                                    </div>
+                                                    <!-- Post Share -->
+                                                    <div class="post-share">
+                                                        <p><i class="fa fa-share-alt" aria-hidden="true"></i></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="{{ meal.get_absolute_url }}">
+                                                <h4 class="post-headline">{{ meal.name }}</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <!-- Single Post -->
+                                <div class="col-12">
+                                    <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".2s">
+                                        <!-- Post Thumb -->
+                                        <div class="post-thumb">
+                                            <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                                        </div>
+                                        <!-- Post Content -->
+                                        <div class="post-content">
+                                            <div class="post-meta d-flex">
+                                                <div class="post-author-date-area d-flex">
+                                                    <!-- Post Author -->
+                                                    <div class="post-author">
+                                                        <p>{{ meal.author }}</p>
+                                                    </div>
+                                                    <!-- Post Date -->
+                                                    <div class="post-date">
+                                                        <p>{{ meal.created_time|date:"F d, Y" }}</p>
+                                                    </div>
+                                                </div>
+                                                <!-- Post Comment & Share Area -->
+                                                <div class="post-comment-share-area d-flex">
+                                                    <!-- Post Favourite -->
+                                                    <div class="post-favourite">
+                                                        <p><i class="fa fa-heart-o" aria-hidden="true"></i> {{ meal.like }}</p>
+                                                    </div>
+                                                    <!-- Post Comments -->
+                                                    <div class="post-comments">
+                                                        <p><i class="fa fa-comment-o" aria-hidden="true"></i> {% count_comments meal %}</p>
+                                                    </div>
+                                                    <!-- Post Share -->
+                                                    <div class="post-share">
+                                                        <p><i class="fa fa-share-alt" aria-hidden="true"></i></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="{{ meal.get_absolute_url }}">
+                                                <h4 class="post-headline">{{ meal.name }}</h4>
+                                            </a>
+                                            <p>{{ meal.description | truncatechars:150 }}</p>
+                                            <a href="{{ meal.get_absolute_url }}" class="read-more">Continue Reading..</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                <!-- ****** Blog Sidebar ****** -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="blog-sidebar mt-5 mt-lg-0">
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area popular-post-widget">
+                            <div class="widget-title text-center">
+                                <h6>Popular Post</h6>
+                            </div>
+                            {% for meal in most_liked_meals %}
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{{ meal.imageURL }}" alt="">
+                                <div class="post-content">
+                                    <a href="{{ meal.get_absolute_url }}">
+                                        <h6>{{ meal.name }}</h6>
+                                    </a>
+                                    <p>{{ meal.created_time|date:"F d, Y" }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ****** Blog Area End ****** -->
+
+    <!-- ****** Instagram Area Start ****** -->
+    <div class="instargram_area owl-carousel section_padding_100_0 clearfix" id="portfolio">
+
+        {% for veg in most_viwed_veg %}
+            <!-- Instagram Item -->
+            <div class="instagram_gallery_item">
+                <!-- Instagram Thumb -->
+                <img src="{{ veg.imageURL }}" alt="{{ veg.name }}">
+                <!-- Hover -->
+                <div class="hover_overlay">
+                    <div class="yummy-table">
+                        <div class="yummy-table-cell">
+                            <div class="follow-me text-center">
+                                <a href="{{ veg.get_absolute_url }}">Learn more ... </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <!-- ****** Our Creative Portfolio Area End ****** -->
+
+{% endblock content %}

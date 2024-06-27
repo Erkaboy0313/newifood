@@ -1,0 +1,144 @@
+##### Pizza 
+Italy Pizza, Authentic Italian Pizza, Best Italian Pizza, Pizza in Italy, Pizza Delivery Italy
+##### Sushi 
+Japan Sushi, Authentic Japanese Sushi, Best Sushi in Japan, Sushi Delivery Japan, Sushi Restaurant Japan
+##### Hamburger 
+United States Hamburger, American Hamburger, Best Hamburger in USA, Hamburger Delivery USA, Hamburger Restaurant USA
+##### Pasta 
+Italy Pasta, Authentic Italian Pasta, Best Italian Pasta, Pasta Delivery Italy, Pasta Restaurant Italy
+##### Curry 
+India Curry, Authentic Indian Curry, Best Curry in India, Curry Delivery India, Curry Restaurant India
+##### Tacos 
+Mexico Tacos, Authentic Mexican Tacos, Best Tacos in Mexico, Tacos Delivery Mexico, Tacos Restaurant Mexico
+##### Steak 
+Steak, Best Steak, Steakhouse, Grill, BBQ
+##### Fried Rice 
+China Fried Rice, Authentic Chinese Fried Rice, Best Fried Rice in China, Fried Rice Delivery China, Fried Rice Restaurant China
+##### Kebab 
+Middle East Kebab, Authentic Middle Eastern Kebab, Best Kebab in Middle East, Kebab Delivery Middle East, Kebab Restaurant Middle East
+##### Chicken Tikka Masala 
+United Kingdom Chicken Tikka Masala, Authentic Chicken Tikka Masala UK, Best Chicken Tikka Masala UK, Chicken Tikka Masala Delivery UK, Chicken Tikka Masala Restaurant UK
+##### Pho 
+Vietnam Pho, Authentic Vietnamese Pho, Best Pho in Vietnam, Pho Delivery Vietnam, Pho Restaurant Vietnam
+##### Paella 
+Spain Paella, Authentic Spanish Paella, Best Paella in Spain, Paella Delivery Spain, Paella Restaurant Spain
+##### Goulash 
+Hungary Goulash, Authentic Hungarian Goulash, Best Goulash in Hungary, Goulash Delivery Hungary, Goulash Restaurant Hungary
+##### Moussaka 
+Greece Moussaka, Authentic Greek Moussaka, Best Moussaka in Greece, Moussaka Delivery Greece, Moussaka Restaurant Greece
+##### Bibimbap 
+South Korea Bibimbap, Authentic Korean Bibimbap, Best Bibimbap in South Korea, Bibimbap Delivery South Korea, Bibimbap Restaurant South Korea
+##### Biryani 
+India Biryani, Authentic Indian Biryani, Best Biryani in India, Biryani Delivery India, Biryani Restaurant India
+##### Shepherd's Pie 
+United Kingdom Shepherd's Pie, Authentic British Shepherd's Pie, Best Shepherd's Pie in UK, Shepherd's Pie Delivery UK, Shepherd's Pie Restaurant UK
+##### Schnitzel 
+Austria Schnitzel, Authentic Austrian Schnitzel, Best Schnitzel in Austria, Schnitzel Delivery Austria, Schnitzel Restaurant Austria
+##### Chili Con Carne 
+Mexico/United States Chili Con Carne, Authentic Chili Con Carne, Best Chili Con Carne, Chili Con Carne Delivery, Chili Con Carne Restaurant
+##### Lasagna 
+Italy Lasagna, Authentic Italian Lasagna, Best Lasagna in Italy, Lasagna Delivery Italy, Lasagna Restaurant Italy
+##### Jambalaya 
+United States (Louisiana) Jambalaya, Authentic Cajun Jambalaya, Best Jambalaya in Louisiana, Jambalaya Delivery Louisiana, Jambalaya Restaurant Louisiana
+##### Pad Thai 
+Thailand Pad Thai, Authentic Thai Pad Thai, Best Pad Thai in Thailand, Pad Thai Delivery Thailand, Pad Thai Restaurant Thailand
+##### Ravioli 
+Italy Ravioli, Authentic Italian Ravioli, Best Ravioli in Italy, Ravioli Delivery Italy, Ravioli Restaurant Italy
+##### Ratatouille 
+France Ratatouille, Authentic French Ratatouille, Best Ratatouille in France, Ratatouille Delivery France, Ratatouille Restaurant France
+##### Fish and Chips 
+United Kingdom Fish and Chips, Authentic British Fish and Chips, Best Fish and Chips in UK, Fish and Chips Delivery UK, Fish and Chips Restaurant UK
+##### Tandoori Chicken 
+India Tandoori Chicken, Authentic Indian Tandoori Chicken, Best Tandoori Chicken in India, Tandoori Chicken Delivery India, Tandoori Chicken Restaurant India
+##### Ramen 
+Japan Ramen, Authentic Japanese Ramen, Best Ramen in Japan, Ramen Delivery Japan, Ramen Restaurant Japan
+##### Gyoza 
+Japan Gyoza, Authentic Japanese Gyoza, Best Gyoza in Japan, Gyoza Delivery Japan, Gyoza Restaurant Japan
+##### Kofta 
+Middle East Kofta, Authentic Middle Eastern Kofta, Best Kofta in Middle East, Kofta Delivery Middle East, Kofta Restaurant Middle East
+##### Beef Stroganoff 
+Russia Beef Stroganoff, Authentic Russian Beef Stroganoff, Best Beef Stroganoff in Russia, Beef Stroganoff Delivery Russia, Beef Stroganoff Restaurant Russia
+##### Fajitas 
+Mexico Fajitas, Authentic Mexican Fajitas, Best Fajitas in Mexico, Fajitas Delivery Mexico, Fajitas Restaurant Mexico
+##### Shawarma 
+Middle East Shawarma, Authentic Middle Eastern Shawarma, Best Shawarma in Middle East, Shawarma Delivery Middle East, Shawarma Restaurant Middle East
+##### Risotto 
+Italy Risotto, Authentic Italian Risotto, Best Risotto in Italy, Risotto Delivery Italy, Risotto Restaurant Italy
+##### Pad See Ew 
+Thailand Pad See Ew, Authentic Thai Pad See Ew, Best Pad See Ew in Thailand, Pad See Ew Delivery Thailand, Pad See Ew Restaurant Thailand
+##### Stuffed Peppers 
+Stuffed Peppers, Authentic Stuffed Peppers, Best Stuffed Peppers, Stuffed Peppers Delivery, Stuffed Peppers Restaurant
+##### Tamales 
+Mexico Tamales, Authentic Mexican Tamales, Best Tamales in Mexico, Tamales Delivery Mexico, Tamales Restaurant Mexico
+##### Currywurst 
+Germany Currywurst, Authentic German Currywurst, Best Currywurst in Germany, Currywurst Delivery Germany, Currywurst Restaurant Germany
+##### Beef Wellington 
+United Kingdom Beef Wellington, Authentic British Beef Wellington, Best Beef Wellington in UK, Beef Wellington Delivery UK, Beef Wellington Restaurant UK
+##### Falafel 
+Middle East Falafel, Authentic Middle Eastern Falafel, Best Falafel in Middle East, Falafel Delivery Middle East, Falafel Restaurant Middle East
+##### Pierogi 
+Poland Pierogi, Authentic Polish Pierogi, Best Pierogi in Poland, Pierogi Delivery Poland, Pierogi Restaurant Poland
+##### Gumbo 
+United States (Louisiana) Gumbo, Authentic Cajun Gumbo, Best Gumbo in Louisiana, Gumbo Delivery Louisiana, Gumbo Restaurant Louisiana
+##### Miso Soup 
+Japan Miso Soup, Authentic Japanese Miso Soup, Best Miso Soup in Japan, Miso Soup Delivery Japan, Miso Soup Restaurant Japan
+##### Ceviche 
+Peru Ceviche, Authentic Peruvian Ceviche, Best Ceviche in Peru, Ceviche Delivery Peru, Ceviche Restaurant Peru
+##### Katsu Curry 
+Japan Katsu Curry, Authentic Japanese Katsu Curry, Best Katsu Curry in Japan, Katsu Curry Delivery Japan, Katsu Curry Restaurant Japan
+##### Coq au Vin 
+France Coq au Vin, Authentic French Coq au Vin, Best Coq au Vin in France, Coq au Vin Delivery France, Coq au Vin Restaurant France
+##### Beef Bourguignon 
+France Beef Bourguignon, Authentic French Beef Bourguignon, Best Beef Bourguignon in France, Beef Bourguignon Delivery France, Beef Bourguignon Restaurant France
+##### Hainanese Chicken Rice 
+Singapore Hainanese Chicken Rice, Authentic Singaporean Hainanese Chicken Rice, Best Hainanese Chicken Rice in Singapore, Hainanese Chicken Rice Delivery Singapore, Hainanese Chicken Rice Restaurant Singapore
+##### Peking Duck 
+China Peking Duck, Authentic Chinese Peking Duck, Best Peking Duck in China, Peking Duck Delivery China, Peking Duck Restaurant China
+##### Beef Rendang 
+Indonesia Beef Rendang, Authentic Indonesian Beef Rendang, Best Beef Rendang in Indonesia, Beef Rendang Delivery Indonesia, Beef Rendang Restaurant Indonesia
+##### Corned Beef and Cabbage 
+Ireland Corned Beef and Cabbage, Authentic Irish Corned Beef and Cabbage, Best Corned Beef and Cabbage in Ireland, Corned Beef and Cabbage Delivery Ireland, Corned Beef and Cabbage Restaurant Ireland
+##### Bibimbap 
+South Korea Bibimbap, Authentic Korean Bibimbap, Best Bibimbap in South Korea, Bibimbap Delivery South Korea, Bibimbap Restaurant South Korea
+##### Rösti 
+Switzerland Rösti, Authentic Swiss Rösti, Best Rösti in Switzerland, Rösti Delivery Switzerland, Rösti Restaurant Switzerland
+##### Croque Monsieur 
+France Croque Monsieur, Authentic French Croque Monsieur, Best Croque Monsieur in France, Croque Monsieur Delivery France, Croque Monsieur Restaurant France
+##### Cannelloni 
+Italy Cannelloni, Authentic Italian Cannelloni, Best Cannelloni in Italy, Cannelloni Delivery Italy, Cannelloni Restaurant Italy
+##### Empanadas 
+Empanadas, Authentic Empanadas, Best Empanadas, Empanadas Delivery, Empanadas Restaurant
+##### Beef Bulgogi 
+South Korea Beef Bulgogi, Authentic Korean Beef Bulgogi, Best Beef Bulgogi in South Korea, Beef Bulgogi Delivery South Korea, Beef Bulgogi Restaurant South Korea
+##### Quiche Lorraine 
+France Quiche Lorraine, Authentic French Quiche Lorraine, Best Quiche Lorraine in France, Quiche Lorraine Delivery France, Quiche Lorraine Restaurant France
+##### Chicken Adobo 
+Philippines Chicken Adobo, Authentic Filipino Chicken Adobo, Best Chicken Adobo in Philippines, Chicken Adobo Delivery Philippines, Chicken Adobo Restaurant Philippines
+##### Kung Pao Chicken
+Kung Pao Chicken, Authentic Kung Pao Chicken recipe, Traditional Kung Pao Chicken Chinese dish, Kung Pao Chicken history and origins, How to make Kung Pao Chicken at home, Kung Pao Chicken ingredients and preparation
+##### Croquettes 
+Spain Croquettes, Authentic Spanish Croquettes, Best Croquettes in Spain, Croquettes Delivery Spain, Croquettes Restaurant Spain
+##### Beef Empanadas 
+Argentina Beef Empanadas, Authentic Argentinian Beef Empanadas, Best Beef Empanadas in Argentina, Beef Empanadas Delivery Argentina, Beef Empanadas Restaurant Argentina
+##### Chicken Parmesan 
+Italy Chicken Parmesan, Authentic Italian Chicken Parmesan, Best Chicken Parmesan in Italy, Chicken Parmesan Delivery Italy, Chicken Parmesan Restaurant Italy
+##### Beef Tacos 
+Mexico Beef Tacos, Authentic Mexican Beef Tacos, Best Beef Tacos in Mexico, Beef Tacos Delivery Mexico, Beef Tacos Restaurant Mexico
+##### Mole Poblano 
+Mexico Mole Poblano, Authentic Mexican Mole Poblano, Best Mole Poblano in Mexico, Mole Poblano Delivery Mexico, Mole Poblano Restaurant Mexico
+##### Huevos Rancheros 
+Mexico Huevos Rancheros, Authentic Mexican Huevos Rancheros, Best Huevos Rancheros in Mexico, Huevos Rancheros Delivery Mexico, Huevos Rancheros Restaurant Mexico
+##### Beef Pot Roast 
+United States Beef Pot Roast, Authentic American Beef Pot Roast, Best Beef Pot Roast in USA, Beef Pot Roast Delivery USA, Beef Pot Roast Restaurant USA
+##### Chicken Satay 
+Thailand Chicken Satay, Authentic Thai Chicken Satay, Best Chicken Satay in Thailand, Chicken Satay Delivery Thailand, Chicken Satay Restaurant Thailand
+##### Chicken Shawarma 
+Middle East Chicken Shawarma, Authentic Middle Eastern Chicken Shawarma, Best Chicken Shawarma in Middle East, Chicken Shawarma Delivery Middle East, Chicken Shawarma Restaurant Middle East
+##### Chicken Quesadilla 
+Mexico Chicken Quesadilla, Authentic Mexican Chicken Quesadilla, Best Chicken Quesadilla in Mexico, Chicken Quesadilla Delivery Mexico, Chicken Quesadilla Restaurant Mexico
+##### Chicken Marsala 
+Italy Chicken Marsala, Authentic Italian Chicken Marsala, Best Chicken Marsala in Italy, Chicken Marsala Delivery Italy, Chicken Marsala Restaurant Italy
+##### Shrimp Fried Rice 
+China Shrimp Fried Rice, Authentic Chinese Shrimp Fried Rice, Best Shrimp Fried Rice in China, Shrimp Fried Rice Delivery China, Shrimp Fried Rice Restaurant China
+##### Lobster Roll 
+United States Lobster Roll, Authentic American Lobster Roll, Best Lobster Roll in USA, Lobster Roll Delivery USA, Lobster Roll Restaurant USA

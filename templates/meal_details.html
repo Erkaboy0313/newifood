@@ -1,0 +1,339 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load video_tags %}
+
+{% block meta %}
+    <meta name="description" content="{{ meal.description|truncatechars:100 }}">
+    <meta name="keywords" content="{{ meal.key_words }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{ meal.name }}</title>
+{% endblock %}
+
+
+{% block navbar %}
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                <!-- Menu Area Start -->
+                <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
+                    <ul class="navbar-nav" id="yummy-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meals</a>
+                            <div class="dropdown-menu" aria-labelledby="yummyDropdown">
+                                {% for region in regions %}
+                                    <a class="dropdown-item" href="{% url 'meal:meal_by_region' region.slug %}">{{ region.name }} Cuisine</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'vegetable:vegetables' %}">Vegetables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'fruit:fruits' %}">Fruits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'fruit:contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock navbar %}
+
+{% block content %}
+    
+    <!-- ****** Breadcumb Area Start ****** -->
+    <div class="breadcumb-area" style="background-image: url({% static 'img/bg-img/banner1.jpg' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="bradcumb-title text-center">
+                        <h2>{{ meal.name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcumb-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'meal:meals' %}">Meals</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ meal.name }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** Breadcumb Area End ****** -->
+
+    <!-- ****** Single Blog Area Start ****** -->
+    <section class="single_blog_area section_padding_80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="row no-gutters">
+                        <!-- Single Post -->
+                        <div class="col-10 col-sm-11">
+                            <div class="single-post">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <p>{{ meal.author }}</p>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <p>{{ meal.created_time|date:"F d, Y" }}</p>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite" style='cursor: pointer' onclick="incrementLike('meals', {{ meal.id }})">
+                                                <p id='meals{{ meal.id }}'><i class="fa fa-heart-o" aria-hidden="true"></i> {{ meal.like }}</p>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <p><i class="fa fa-comment-o" aria-hidden="true"></i> {% count_comments meal %}</p>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <p><i class="fa fa-share-alt" aria-hidden="true"></i></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h2 class="post-headline">{{ meal.name }}</h2>
+                                    
+                                    <p>{{ meal.description|safe }}</p>
+                                    <p><strong>Cost:</strong> {{ meal.avarage_cost }} </p>
+                                    {% for loc in meal.locations_set.all %}
+                                        {% if forloop.counter == 1 %}
+                                            <h4>Some Locations That You Can Find This Food</h4>
+                                        {% endif %}
+                                        <p><i class="fa fa-location-arrow" aria-hidden="true"></i> <a style='color:black' href="https://www.google.com/maps?q={{ loc.latitude }},{{ loc.longitude }}" target="_blank">{{ loc.address }}</a></p>
+                                    {% endfor %}
+
+                                    {% for section in meal.section_set.all %}
+                                        <img class="br-30 mb-30" src="{{ section.imageURL }}" alt="">
+                                        <p>{{ section.text }}</p>
+                                    {% endfor %}
+
+                                    {% if meal.recipe %}
+                                    <ul class="mb-30">
+                                        {{ meal.recipe|safe }}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Related Post Area -->
+                            <div class="related-post-area section_padding_50">
+                                <h4 class="mb-30">Related post</h4>
+
+                                <div class="related-post-slider owl-carousel">
+                                    {% for post in related %}
+                                        <!-- Single Related Post-->
+                                        <div class="single-post">
+                                            <!-- Post Thumb -->
+                                            <div class="post-thumb">
+                                                <img src="{{ post.imageURL }}" alt="">
+                                            </div>
+                                            <!-- Post Content -->
+                                            <div class="post-content">
+                                                <div class="post-meta d-flex">
+                                                    <div class="post-author-date-area d-flex">
+                                                        <!-- Post Author -->
+                                                        <div class="post-author">
+                                                            <p>{{ post.author }}</p>
+                                                        </div>
+                                                        <!-- Post Date -->
+                                                        <div class="post-date">
+                                                            <p>{{ post.created_time|date:"F d, Y" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="{{ post.get_absolute_url }}">
+                                                    <h6>{{ post.name }}</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>  
+                            </div>
+
+                            <!-- Comment Area Start -->
+                            <div class="comment_area section_padding_50 clearfix">
+                                <h4 class="mb-30">{% count_comments meal %} Comments</h4>
+
+                                <ol>
+                                    {% for comment in comments %}
+                                        <!-- Single Comment Area -->
+                                        <li class="single_comment_area">
+                                            <div class="comment-wrapper d-flex">
+                                                <!-- Comment Meta -->
+                                                <div class="comment-author">
+                                                    <img src="{% static 'img/character/user.jpg'%}" alt="">
+                                                </div>
+                                                <!-- Comment Content -->
+                                                <div class="comment-content">
+                                                    <span class="comment-date text-muted">{{ comment.timestamp|date:"F d, Y" }}</span>
+                                                    <h5>{{ comment.username }}</h5>
+                                                    <p>{{ comment.content }}</p>
+                                                    <span class='like'>Like</span>
+                                                    <a href='#comment_box' onclick="showReply('{{ comment.content }}', {{ comment.id }})" class='reply active'>Reply</a>
+                                                </div>
+                                            </div>  
+                                            {% for replay in comment.comment_set.all %}
+                                                <ol class="children">
+                                                    <li class="single_comment_area">
+                                                        <div class="comment-wrapper d-flex">
+                                                            <!-- Comment Meta -->
+                                                            <div class="comment-author">
+                                                                <img src="{% static 'img/character/user.jpg'%}" alt="">
+                                                            </div>
+                                                            <!-- Comment Content -->
+                                                            <div class="comment-content">
+                                                                <span class="comment-date text-muted">{{ replay.timestamp|date:"F d, Y" }}</span>
+                                                                <h5>{{ replay.username }}</h5>
+                                                                <p>{{ replay.content }}</p>
+                                                                <span class='like'>Like</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            {% endfor %}
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+
+                            <!-- Leave A Comment -->
+                            <div class="leave-comment-area section_padding_50 clearfix" id='comment_box'>
+                                <div class="comment-form">
+                                    <h4 class="mb-2">Leave A Comment</h4>
+                                    
+                                    <!-- Comment Form -->
+                                    <form action="{% url 'create_comment' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group" id='replybox' style='display:none'>
+                                            <label for="replyInput">Reply:</label>
+                                            <div class="input-group">
+                                                <input type='text' class="form-control" id='replyInput' disabled>
+                                                <div class="input-group-append d-flex align-items-center" style='background-color:#e9ecef; border-radius: 3px; width:20px'>
+                                                    <span id='cancel_reply' class="input-group-text">
+                                                        <i class="fa fa-close close-icon"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <input type='hidden' name='reply' class="form-control" id='replyId'>
+                                        </div>
+                                        <input type='hidden' name="object_id"  value="{{ meal.id }}">
+                                        <input type='hidden' name="type"  value="meal">
+                                        <div class="form-group">
+                                            <input name='username' type="text" class="form-control" id="contact-name" placeholder="Name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name='email' type="email" class="form-control" id="contact-email" placeholder="Email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name='content' class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn contact-btn">Post Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ****** Blog Sidebar ****** -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="blog-sidebar mt-5 mt-lg-0">
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area popular-post-widget">
+                            <div class="widget-title text-center">
+                                <h6>Popular Post</h6>
+                            </div>
+                            {% for post in most_liked_meals %}
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{{ post.imageURL }}" alt="{{ post.name }}">
+                                <div class="post-content">
+                                    <a href="{{ post.get_absolute_url }}">
+                                        <h6>{{ post.name }}</h6>
+                                    </a>
+                                    <p>{{ post.created_time|date:"F d, Y" }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ****** Single Blog Area End ****** -->
+
+    <!-- ****** Instagram Area Start ****** -->
+    <div class="instargram_area owl-carousel section_padding_100_0 clearfix" id="portfolio">
+        {% for meal in most_viewed_meals %}
+            <!-- Instagram Item -->
+            <div class="instagram_gallery_item">
+                <!-- Instagram Thumb -->
+                <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                <!-- Hover -->
+                <div class="hover_overlay">
+                    <div class="yummy-table">
+                        <div class="yummy-table-cell">
+                            <div class="follow-me text-center">
+                                <a href="{{ meal.get_absolute_url }}">Learn more ... </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- ****** Our Creative Portfolio Area End ****** -->
+   
+{% endblock content %}
+
+{% block bottom_nav %}
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'meal:meals' %}">Meals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'vegetable:vegetables' %}">Vegetabeles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'fruit:fruits' %}">Fruits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'fruit:contact' %}">Contact</a>
+        </li>
+    </ul>
+{% endblock %}

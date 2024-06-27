@@ -1,0 +1,303 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load video_tags %}
+
+{% block meta %}
+    <meta name="description" content="Explore the colorful spectrum of vegetables with our comprehensive guide. Learn about the health benefits, cooking techniques, and creative recipes featuring an array of fresh, seasonal vegetables.">
+    <meta name="keywords" content="{{ country.veg_key_words }} {{ country.region.veg_key_words }} Fresh vegetable varieties, Nutrient-packed veggies, Vegetable recipes, Seasonal vegetable guide, Leafy greens, Root vegetables, Cruciferous vegetables, Vegetable nutrition facts, Vegetable gardening tips, Vegetarian dishes">
+{% endblock %}
+
+{% block title %}
+    {% if country %}
+        <title>Foods in {{ country.name }}</title>
+    {% elif type %}
+        <title>{{ type }} Vegetables</title>
+    {% else %}
+        <title>iFood - Vegetables</title>
+    {% endif %}
+{% endblock %}  
+
+{% block navbar %}
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                <!-- Menu Area Start -->
+                <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
+                    <ul class="navbar-nav" id="yummy-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meals</a>
+                            <div class="dropdown-menu" aria-labelledby="yummyDropdown">
+                                {% for region in regions %}
+                                    <a class="dropdown-item" href="{% url 'meal:meal_by_region' region.slug %}">{{ region.name }} Cuisine</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'vegetable:vegetables' %}">Vegetables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'fruit:fruits' %}">Fruits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'fruit:contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock navbar %}
+
+{% block content %}
+    <!-- ****** Breadcumb Area Start ****** -->
+    <div class="breadcumb-area" style="background-image: url({% static 'img/bg-img/banner2.jpg' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="bradcumb-title text-center">
+                        <h2>Vegetables</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcumb-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Vegetabeles</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** Breadcumb Area End ****** -->
+
+    <!-- ****** Archive Area Start ****** -->
+    <section class="archive-area py-5">
+        <div class="container"> 
+            <div class="btn btn-outline-primary myButton my-3" id="open-fintering">
+                Filters <i class="fa fa-gear"></i>
+            </div>
+
+            <div class="my-3" style="display: none;" id="filter-options">
+                <form method="post" class="d-flex flex-column align-items-end">
+                    {% csrf_token %}
+                    <div class="w-100 form-row">
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="mealType">Country:</label>
+                            <select name='country' class="form-control" id="mealType">
+                                <option value=""></option>
+                                {% for country in countries %}
+                                    <option value="{{ country.id }}">{{ country.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="mealType">Type:</label>
+                            <select name='type' class="form-control" id="mealType">
+                                <option value=""></option>
+                                <option value="leafygreens">Leafy Greens</option>
+                                <option value="root">Root Vegetables</option>
+                                <option value="cruciferous">Cruciferous Vegetables</option>
+                                <option value="alliums">Alliums</option>
+                                <option value="nightshades">Nightshades</option>
+                                <option value="squashandgourds">Squash and Gourds </option>
+                                <option value="legumes">Legumes</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="dietaryPreference">Color:</label>
+                            <select name='color' class="form-control" id="dietaryPreference">
+                                <option value=""></option>
+                                <option value="green">Green Vegetables</option>
+                                <option value="orangeandyellow">Orange and Yellow Vegetables</option>
+                                <option value="redandpurple">Red and Purple Vegetables</option>
+                                <option value="whiteandtan">White and Tan Vegetables</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="cookingMethod">Seasonality:</label>
+                            <select name='season' class="form-control" id="cookingMethod">
+                                <option value=""></option>
+                                <option value="spring">Spring Vegetables</option>
+                                <option value="summer">Summer Vegetables</option>
+                                <option value="fall">Fall Vegetables</option>
+                                <option value="winter">Winter Vegetables</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="ingredients">Cuisine:</label>
+                            <select name='couisine' class="form-control" id="ingredients">
+                                <option value=""></option>
+                                <option value="mediterranean">Mediterranean Vegetables</option>
+                                <option value="asian">Asian Vegetables</option>
+                                <option value="latinamerican">Latin American Vegetables</option>
+                                <option value="indian">Indian Vegetables</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="specialOccasions">Cooking Method:</label>
+                            <select name='cooking_method' class="form-control" id="specialOccasions">
+                                <option value=""></option>
+                                <option value="raw">Raw Vegetables</option>
+                                <option value="steamed">Steamed Vegetables</option>
+                                <option value="roasted">Roasted Vegetables</option>
+                                <option value="grilled">Grilled Vegetables</option>
+                                <option value="stirfried">Stir-fried Vegetables</option>
+                                <option value="boiled">Boiled Vegetables</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="popularDishes">Use:</label>
+                            <select name='use_case' class="form-control" id="popularDishes">
+                                <option value=""></option>
+                                <option value="salad">Salad Vegetables</option>
+                                <option value="soup">Soup Vegetables</option>
+                                <option value="sidedish">Side Dish Vegetables</option>
+                                <option value="maincourse">Main Course Vegetables</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6 col-lg-3">
+                            <label for="popularDishes">Nutritional Content:</label>
+                            <select name='nurtitional' class="form-control" id="popularDishes">
+                                <option value=""></option>
+                                <option value="highfiber">High-Fiber Vegetables</option>
+                                <option value="highprotein">High-Protein Vegetables</option>
+                                <option value="lowcarb">Low-Carb Vegetables</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary myButton">Submit</button>
+                </form>
+            </div>
+
+            <div class="row">   
+                <!-- Single Post -->
+                {% for vegetable in vegetables %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
+                        <!-- Post Thumb -->
+                        <div class="post-thumb">
+                            <img src="{{ vegetable.imageURL }}" alt="{{ vegetable.name }}">
+                        </div>
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <div class="post-meta d-flex">
+                                <div class="post-author-date-area d-flex">
+                                    <!-- Post Author -->
+                                    <div class="post-author">
+                                        <p>{{ vegetable.author }}</p>
+                                    </div>
+                                    <!-- Post Date -->
+                                    <div class="post-date">
+                                        <p>{{ vegetable.created_time|date:"F d, Y" }}</p>
+                                    </div>
+                                </div>
+                                <!-- Post Comment & Share Area -->
+                                <div class="post-comment-share-area d-flex">
+                                    <!-- Post Favourite -->
+                                    <div class="post-favourite">
+                                        <p><i class="fa fa-heart-o" aria-hidden="true"></i> {{ vegetable.like }}</p>
+                                    </div>
+                                    <!-- Post Comments -->
+                                    <div class="post-comments">
+                                        <p><i class="fa fa-comment-o" aria-hidden="true"></i> {% count_comments vegetable %}</p>
+                                    </div>
+                                    <!-- Post Share -->
+                                    <div class="post-share">
+                                        <p><i class="fa fa-share-alt" aria-hidden="true"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ vegetable.get_absolute_url }}">
+                                <h4 class="post-headline">{{ vegetable.name }}</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <div class="col-12">
+                    <div class="pagination-area d-sm-flex mt-15">
+                        <nav aria-label="#">
+                            <ul class="pagination">
+                                {% if vegetables.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ vegetables.previous_page_number }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Previous</a>
+                                    </li>
+                                {% endif %}
+                                    <li class="page-item active">
+                                        <a class="page-link">{{ vegetables.number }} <span class="sr-only">(current)</span></a>
+                                    </li>
+                                {% if vegetables.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ vegetables.next_page_number }}">Next <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    </li>
+                                {% endif %}
+                            </ul> 
+                        </nav>
+                        <div class="page-status">
+                            <p>Page {{ vegetables.number }} of {{ vegetables.paginator.num_pages }} results</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ****** Archive Area End ****** -->
+
+    <!-- ****** Instagram Area Start ****** -->
+    <div class="instargram_area owl-carousel section_padding_100_0 clearfix" id="portfolio">
+
+        {% for meal in most_viwed_meals %}
+            <!-- Instagram Item -->
+            <div class="instagram_gallery_item">
+                <!-- Instagram Thumb -->
+                <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                <!-- Hover -->
+                <div class="hover_overlay">
+                    <div class="yummy-table">
+                        <div class="yummy-table-cell">
+                            <div class="follow-me text-center">
+                                <a href="{{ meal.get_absolute_url }}">Learn more ... </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- ****** Our Creative Portfolio Area End ****** -->
+
+{% endblock content %}
+
+{% block bottom_nav %}
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'meal:meals' %}">Meals</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'vegetable:vegetables' %}">Vegetabeles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'fruit:fruits' %}">Fruits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'fruit:contact' %}">Contact</a>
+        </li>
+    </ul>
+{% endblock %}

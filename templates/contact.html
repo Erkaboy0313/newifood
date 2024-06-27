@@ -1,0 +1,125 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+    <title>IFood - Contact us</title>
+{% endblock %}
+
+{% block navbar %}
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                <!-- Menu Area Start -->
+                <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
+                    <ul class="navbar-nav" id="yummy-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meals</a>
+                            <div class="dropdown-menu" aria-labelledby="yummyDropdown">
+                                {% for region in regions %}
+                                    <a class="dropdown-item" href="{% url 'meal:meal_by_region' region.slug %}">{{ region.name }} Cuisine</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'vegetable:vegetables' %}">Vegetables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'fruit:fruits' %}">Fruits</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'fruit:contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock navbar %}
+
+{% block content %}
+    <!-- ****** Breadcumb Area Start ****** -->
+    <div class="breadcumb-area" style="background-image: url({% static 'img/bg-img/breadcumb.jpg' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="bradcumb-title text-center">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcumb-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** Breadcumb Area End ****** -->
+
+    <!-- ****** Contatc Area Start ****** -->
+    <div class="contact-area section_padding_80">
+        <div class="container">
+            <!-- Contact Form  -->
+            <div class="contact-form-area">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 item">
+                        <div class="contact-form wow fadeInUpBig" data-wow-delay="0.6s">
+                            <h2 class="contact-form-title mb-30">If You Have Any Question Contact Me Today !</h2>
+                            <!-- Contact Form -->
+                            <form action="{% url 'contactus' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input name='name' type="text" class="form-control" id="contact-name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input name='email' type="email" class="form-control" id="contact-email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name='text' class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                </div>
+                                <button type="submit" class="btn contact-btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ****** Contact Area End ****** -->
+
+
+{% endblock content %}
+
+{% block bottom_nav %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'meal:meals' %}">Meals</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'vegetable:vegetables' %}">Vegetabeles</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'fruit:fruits' %}">Fruits</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'fruit:contact' %}">Contact</a>
+    </li>
+</ul>
+{% endblock %}

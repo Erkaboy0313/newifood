@@ -1,0 +1,144 @@
+##### Pizza 
+**Average cost of a sushi meal in Japan:** $8-$18
+##### Sushi 
+**Average cost of a sushi meal in Japan:** $20-$30 
+##### Hamburger 
+**Average cost of a hamburger in the United States:** $10-$12
+##### Pasta 
+**Average cost of a pasta dish in Italy:** $15-$20
+##### Curry 
+**Average cost of a curry dish in India:** $3-$5
+##### Tacos 
+**Average cost of a taco in Mexico:** $1-$2
+##### Steak 
+**Average cost of a steak dinner in the United States:** $25-$35
+##### Fried Rice 
+**Average cost of a fried rice dish in China:** $4-$5
+##### Kebab 
+**Average cost of a kebab in Uzbekistan:** $2-$3
+##### Chicken Tikka Masala 
+**Average cost of chicken tikka masala in the United Kingdom:** $12-$15
+##### Pho 
+**Average cost of a pho in Vietnam:** $2-$3
+##### Paella 
+**Average cost of paella in Spain:** $15-$20
+##### Goulash 
+**Average cost of goulash in Hungary:** $10-$15
+##### Moussaka 
+**Average cost of moussaka in Greece:** $10-$15
+##### Bibimbap 
+**Average cost of bibimbap in South Korea:** $7-$12
+##### Biryani 
+**Average cost of biryani in India:** $3-$5
+##### Shepherd's Pie 
+**Average cost of shepherd's pie in the United Kingdom:** $14-$18
+##### Schnitzel 
+**Average cost of schnitzel in Austria:** $15-$20
+##### Chili Con Carne 
+**Average cost of chili con carne in the United States:** $8-$12
+##### Lasagna 
+**Average cost of lasagna in Italy:** $15-$20
+##### Jambalaya 
+**Average cost of jambalaya in the United States:** $15-$20
+##### Pad Thai 
+**Average cost of pad Thai in Thailand:** $4-$6
+##### Ravioli 
+**Average cost of ravioli in Italy:** $15-$20
+##### Ratatouille 
+**Average cost of ratatouille in France:** $15-$20
+##### Fish and Chips 
+**Average cost of fish and chips in the United Kingdom:** $10-$15
+##### Tandoori Chicken 
+**Average cost of tandoori chicken in India:** $3-$5
+##### Ramen 
+**Average cost of ramen in Japan:** $10-$15
+##### Gyoza 
+**Average cost of gyoza in Japan:** $6-$10
+##### Kofta 
+**Average cost of kofta in Saudi Arabia:** $2-$4 
+##### Beef Stroganoff 
+**Average cost of beef stroganoff in Russia:** $10-$15
+##### Fajitas 
+**Average cost of fajitas in Mexico:** $7-$10
+##### Shawarma 
+**Average cost of shawarma in Saudi Arabia:** $2-$4 
+##### Risotto 
+**Average cost of risotto in Italy:** $15-$20
+##### Pad See Ew 
+**Average cost of pad see ew in Thailand:** $4-$6
+##### Stuffed Peppers 
+**Average cost of stuffed peppers in Thailand:** $2-$4 
+##### Tamales 
+**Average cost of tamales in Mexico:** $1-$2
+##### Currywurst 
+**Average cost of currywurst in Germany:** $4-$6
+##### Falafel 
+**Average cost of falafel in Saudi Arabia:** $2-$4
+##### Pierogi 
+**Average cost of pierogi in Poland:** $1-$2
+##### Gumbo 
+**Average cost of gumbo in the United States:** $10-$15
+##### Miso Soup 
+**Average cost of miso soup in Japan:** $4-$6
+##### Ceviche 
+**Average cost of ceviche in Peru:** $4-$6
+##### Katsu Curry 
+**Average cost of katsu curry in Japan:** $10-$15
+##### Coq au Vin 
+**Average cost of coq au vin in France:** $20-$25
+##### Beef Bourguignon 
+**Average cost of beef bourguignon in France:** $20-$25
+##### Hainanese Chicken Rice 
+**Average cost of Hainanese chicken rice in Singapore:** $4-$6
+##### Peking Duck 
+**Average cost of Peking duck in China:** $30-$40
+##### Beef Rendang 
+**Average cost of beef rendang in Indonesia:** $4-$6
+##### Corned Beef and Cabbage 
+**Average cost of corned beef and cabbage in Ireland:** $15-$18
+##### Bibimbap 
+**Average cost of bibimbap in South Korea:** $7-$10
+##### Rösti 
+**Average cost of rösti in Switzerland:** $10-$15
+##### Croque Monsieur 
+**Average cost of croque monsieur in France:** $10-$15
+##### Cannelloni 
+**Average cost of cannelloni in Italy:** $15-$20
+##### Empanadas 
+**Average cost of empanadas in Argentina:** $2-$4
+##### Beef Bulgogi 
+**Average cost of beef bulgogi in South Korea:** $10-$15
+##### Quiche Lorraine 
+**Average cost of quiche lorraine in France:** $6-$8
+##### Chicken Adobo 
+**Average cost of chicken adobo in the Philippines:** $2-$4
+##### Kung Pao Chicken 
+**Average cost of kung pao chicken in China:** $5-$8
+##### Croquettes 
+**Average cost of croquettes in Spain:** $6-$8
+##### Beef Empanadas 
+**Average cost of beef empanadas in Argentina:** $2-$4
+##### Chicken Parmesan 
+**Average cost of chicken parmesan in Italy:** $15-$20
+##### Beef Tacos 
+**Average cost of beef tacos in Mexico:** $2-$4
+##### Mole Poblano 
+**Average cost of mole poblano in Mexico:** $4-$6
+##### Huevos Rancheros 
+**Average cost of huevos rancheros in Mexico:** $4-$6
+##### Beef Pot Roast 
+**Average cost of beef pot roast in the United States:** $15-$20
+##### Chicken Satay 
+**Average cost of chicken satay in Thailand:** $2-$4 
+##### Chicken Shawarma 
+**Average cost of chicken shawarma in Saudi Arabia:** $2-$4
+##### Chicken Quesadilla 
+**Average cost of chicken quesadilla in Mexico:** $2-$4
+##### Chicken Marsala 
+**Average cost of chicken marsala in Italy:** $18-$20
+##### Shrimp Scampi 
+**Average cost of shrimp scampi in Italy:** $18-$20
+##### Shrimp Fried Rice 
+**Average cost of shrimp fried rice in China:** $5-$8
+##### Lobster Roll 
+**Average cost of lobster roll in the United States:** $18-$22
