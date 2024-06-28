@@ -20,6 +20,8 @@ from fruit.views import home
 from django.views.generic import RedirectView
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
+
 urlpatterns = [
     path('',RedirectView.as_view(url = 'home/')), # redirects ('') to ('home/')
     path('admin/', admin.site.urls),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('vegetables/',include('vegetable.urls')),
     path('meals/',include('meal.urls')),
     path('comment/',include('comment.urls')),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
 ]
 
 if settings.DEBUG:
