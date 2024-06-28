@@ -3,7 +3,7 @@
 {% load video_tags %}
 
 {% block meta %}
-    <meta name="description" content="{{ fruit.description|truncatechars:100 }}">
+    <meta name="description" content="{{ fruit.description|strip_html_and_truncate:100 }}">
     <meta name="keywords" content="{{ fruit.key_words }}">
 {% endblock %}
 
@@ -124,7 +124,7 @@
                                     
                                     <h2 class="post-headline">{{ fruit.name }} $</h2>
                                     
-                                    <p>{{ fruit.description }}</p>
+                                    <p>{{ fruit.description|safe }}</p>
                                     <p><strong>Cost:</strong> {{ fruit.avarage_cost }}</p>
 
                                     {% for section in fruit.section_set.all %}

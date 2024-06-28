@@ -25,7 +25,7 @@
                     </div>
                     <a href="{{ fruit.get_absolute_url }}">
                         <h5>{{ fruit.name }}</h5>
-                        <p>{{ fruit.description | truncatechars:50 }}</p>
+                        <p>{{ fruit.description | strip_html_and_truncate:50 }}</p>
                     </a>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                                             <a href="{{ meal.get_absolute_url }}">
                                                 <h4 class="post-headline">{{ meal.name }}</h4>
                                             </a>
-                                            <p>{{ meal.description | truncatechars:150 }}</p>
+                                            <p>{{ meal.description|strip_html_and_truncate:15 }}</p>
                                             <a href="{{ meal.get_absolute_url }}" class="read-more">Continue Reading..</a>
                                         </div>
                                     </div>

@@ -3,7 +3,7 @@
 {% load video_tags %}
 
 {% block meta %}
-    <meta name="description" content="{{ meal.description|truncatechars:100 }}">
+    <meta name="description" content="{{ meal.description|strip_html_and_truncate:100 }}">
     <meta name="keywords" content="{{ meal.key_words }}">
 {% endblock %}
 

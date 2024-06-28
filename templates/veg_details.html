@@ -3,7 +3,7 @@
 {% load video_tags %}
 
 {% block meta %}
-    <meta name="description" content="{{ vegtable.description|truncatechars:100 }}">
+    <meta name="description" content="{{ vegtable.description|strip_html_and_truncate:100 }}">
     <meta name="keywords" content="{{ vegtable.key_words }}">
 {% endblock %}
 
@@ -122,7 +122,7 @@
                                     
                                     <h2 class="post-headline">{{ vegtable.name }}</h2>
                                     
-                                    <p>{{ vegtable.description }}</p>
+                                    <p>{{ vegtable.description|safe }}</p>
                                     <p><strong>Cost:</strong> {{ vegtable.avarage_cost }} $</p>
 
                                     {% for section in vegtable.section_set.all %}
