@@ -65,7 +65,7 @@ class Meal(models.Model):
     filter = MealManger()
 
     class Meta:
-        ordering = ['-created_time']
+        ordering = ['-created_time','-confirmed']
         indexes = [
             models.Index(fields=['-created_time']),
         ]

@@ -61,7 +61,7 @@ class Fruit(models.Model):
             return ''
 
     class Meta:
-        ordering = ['-created_time']
+        ordering = ['-created_time','-confirmed']
         indexes = [
             models.Index(fields=['-created_time']),
         ]

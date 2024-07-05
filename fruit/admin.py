@@ -3,7 +3,7 @@ from .models import Fruit,Section
 
 @admin.register(Fruit)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['slug', 'name', 'like', 'seen', 'key_words']
+    list_display = ['slug', 'name', 'like', 'seen', 'confirmed']
     list_filter = ['country', 'created_time', 'like', 'seen']
     search_fields = ['name', 'description']
     date_hierarchy = 'created_time'
