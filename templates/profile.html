@@ -1,0 +1,174 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load video_tags %}
+
+
+{% block mainHeader %}
+    <div class="row">
+        <!-- Logo Area Start -->
+        <div class="col-12">
+            <div class="logo_area text-center">
+                <a href="{% url 'home' %}" class="yummy-logo pb-0">iFood</a><br>
+                <p class="yummy-logo pt-0" style="font-size: 30px;">Share Your Recipes with the World!</p><br><br>
+                <a class="new-blog" href="/create-blog/{{category}}/">Create New Blog</a><br><br><br>
+                {% include 'partials/_flash_messages.html' %}
+            </div>
+        </div>
+    </div>                
+{% endblock mainHeader %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+
+
+{% block content %}
+    
+    <!-- ****** Categories Area Start ****** -->
+    <section class="categories_area clearfix" id="about">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
+                        <img src="{% static 'img/catagory-img/veg.jpg' %}" alt="">
+                        <div class="catagory-title  {% if category == 'vegetable' %} active {% endif %}">
+                            <a href="{% url 'user:profile_cat' 'vegetable' %}">
+                                <h5>Vegetables</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
+                        <img src="{% static 'img/catagory-img/meal3.jpg' %}" alt="">
+                        <div class="catagory-title {% if category == 'meal' %} active {% endif %}">
+                            <a href="{% url 'user:profile_cat' 'meal' %}">
+                                <h5>Meals</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
+                        <img src="{% static 'img/catagory-img/fruit.jpg' %}" alt="">
+                        <div class="catagory-title {% if category == 'fruit' %} active {% endif %}">
+                            <a href="{% url 'user:profile_cat' 'fruit' %}">
+                                <h5>Fruits</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ****** Categories Area End ****** -->
+
+    <!-- ****** Blog Area Start ****** -->  
+    <section class="blog_area section_padding_0_80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row">
+                        {% for blog in blogs %}
+                            <div class="col-12 mt-3">
+                                <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".2s">
+                                    <!-- Post Thumb -->
+                                    <div class="post-thumb" style="flex-basis: 30%;">
+                                        <img src="{{ blog.imageURL }}" alt="{{ meal.name }}">
+                                    </div>
+                                    <!-- Post Content -->
+                                    <div class="post-content" style="flex-basis: 70%;">
+                                        <div class="post-meta d-flex">
+                                            <div class="post-author-date-area d-flex">
+                                                <!-- Post Author -->
+                                                <div class="post-author">
+                                                    <p>{{ blog.created_time|date:"F d, Y" }}</p>
+                                                </div>
+                                                <!-- Post Date -->
+                                                <div class="post-date mr-3">
+                                                    <p>status: <span {% if not blog.status == 'published' %} class="bg-warning" {% endif %} >{{ blog.status }}</span> </p>
+                                                </div>
+                                                <div class="post-date">
+                                                    <p>confirmed: {% if blog.confirmed %} <span >confirmed</span> {% else %} <span class="bg-warning">waiting</span> {% endif %}</p>
+                                                </div>
+                                            </div>
+                                            <!-- Post Comment & Share Area -->
+                                            <div class="post-comment-share-area d-flex justify-content-between">
+                    
+                                                <!-- Post Favourite -->
+                                                <div class="post-favourite">
+                                                    <p><i class="fa fa-eye" aria-hidden="true"></i> {{ blog.seen }}</p>
+                                                </div>
+                                                <!-- Post Favourite -->
+                                                <div class="post-favourite">
+                                                    <p>  {{ blog.like }}</p>
+                                                </div>
+                                                <!-- Post Comments -->
+                                                <div class="post-comments">
+                                                    <p><i class="fa fa-comment-o" aria-hidden="true"></i> {% count_comments blog %}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="{{ blog.get_absolute_url }}">
+                                            <h4 class="post-headline">{{ blog.name }}</h4>
+                                        </a>
+                                        <p>{{ blog.description|strip_html_and_truncate:35 }}</p>
+                                        <a href="{{ blog.get_absolute_url }}" class="read-more">Preview</a>
+
+                                        {% if category == 'meal' %}
+                                            <a href="{% url 'user:edit_meal' blog.slug %}" class="read-more">Edit</a>   
+                                            
+                                            {% if blog.status == 'published' %}
+                                            <a href="{% url 'user:change_meal_status' blog.slug %}" class="read-more">Make Draft</a>
+                                            {% else %}
+                                            <a href="{% url 'user:change_meal_status' blog.slug %}" class="read-more">Publish</a>
+                                            {% endif %}
+                                            <a href="{% url 'user:delete_meal' blog.slug %}" class="read-more danger">Delete</a>
+
+                                        {% elif category == 'vegetable' %}
+                                            <a href="{% url 'user:edit_vegetable' blog.slug %}" class="read-more">Edit</a>   
+                                            
+                                            {% if blog.status == 'published' %}
+                                            <a href="{% url 'user:change_vegetable_status' blog.slug %}" class="read-more">Make Draft</a>
+                                            {% else %}
+                                            <a href="{% url 'user:change_vegetable_status' blog.slug %}" class="read-more">Publish</a>
+                                            {% endif %}
+                                            <a href="{% url 'user:delete_vegetable' blog.slug %}" class="read-more danger">Delete</a>
+
+                                        {% elif category == 'fruit' %}
+                                            <a href="{% url 'user:edit_fruit' blog.slug %}" class="read-more">Edit</a>   
+                                            
+                                            {% if blog.status == 'published' %}
+                                            <a href="{% url 'user:change_fruit_status' blog.slug %}" class="read-more">Make Draft</a>
+                                            {% else %}
+                                            <a href="{% url 'user:change_fruit_status' blog.slug %}" class="read-more">Publish</a>
+                                            {% endif %}
+                                            <a href="{% url 'user:delete_fruit' blog.slug %}" class="read-more danger">Delete</a>
+
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+                                <h3>You have no blogs in {{ category }}s category</h3>
+                                <p class="m-0" style="font-size: 20px;">Create now</p>
+                                <a class="new-blog" href="/create-blog/{{category}}/">Create a Blog</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ****** Blog Area End ****** -->
+
+{% endblock content %}

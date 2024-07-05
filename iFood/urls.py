@@ -21,9 +21,12 @@ from django.views.generic import RedirectView
 from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
+from user.views import upload_file
+from django_ckeditor_5 import urls
 
 urlpatterns = [
     path('',RedirectView.as_view(url = 'home/')), # redirects ('') to ('home/')
+    path('',include('user.urls')), 
     path('admin/', admin.site.urls),
     path('home/',home,name='home'),
     path('fruits/',include('fruit.urls')),
@@ -31,6 +34,7 @@ urlpatterns = [
     path('meals/',include('meal.urls')),
     path('comment/',include('comment.urls')),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
+    path("ckeditor5/image_upload/", upload_file, name="ck_editor_5_upload_file"),
 ]
 
 if settings.DEBUG:

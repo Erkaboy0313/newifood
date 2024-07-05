@@ -7,12 +7,13 @@ from comment.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.http import Http404
 from django.db.models import Q
 
 def home(request):
     most_viwed_fruits = Fruit.filter.get_most_viewed_10()
     most_viwed_meals = Meal.filter.get_most_viewed_10()
-    most_liked_meals = Meal.filter.get_most_viewed_10()
+    most_liked_meals = Meal.filter.get_most_liked_10()
     most_viwed_veg = Vegetable.filter.get_most_viewed_10()
 
     context = {
@@ -28,7 +29,16 @@ def contact_us(request):
     return render(request,'contact.html')
 
 def fruitdetails(request,region,country,year,month,day,post):
+
     fruit = Fruit.objects.get(slug = post)
+
+    if fruit.status == 'draft':
+        if request.user.is_authenticated:
+            if not request.user.is_superuser and not fruit.author == request.user.username:
+                raise Http404("Page not found")
+        else:
+            raise Http404("Page not found")
+
 
     if f'post_views_{fruit.id}' not in request.session:
         fruit.seen += 1
@@ -56,9 +66,9 @@ def fruitdetails(request,region,country,year,month,day,post):
 def search_result(request):
     keyword = request.GET.get('search',None)
     if keyword:
-        meals = Meal.objects.filter(Q(name__icontains = keyword) | Q(description__icontains = keyword))
-        fruits = Fruit.objects.filter(Q(name__icontains = keyword) | Q(description__icontains = keyword))
-        vegetables = Vegetable.objects.filter(Q(name__icontains = keyword) | Q(description__icontains = keyword))
+        meals = Meal.objects.filter(Q(name__icontains = keyword) | Q(description__icontains = keyword),satatus = 'published',confirmed = True,)
+        fruits = Fruit.objects.filter(Q(name__icontains = keyword) | Q(description__icontains = keyword),satatus = 'published',confirmed = True,)
+        vegetables = Vegetable.objects.filter(Q(name__icontains = keyword) | Q(description__icontains = keyword),satatus = 'published',confirmed = True,)
         context = {
             'meals':meals,
             'fruits':fruits,
@@ -75,11 +85,11 @@ def fruits(request):
             if not key == 'csrfmiddlewaretoken' and value:
                 filter_params[key] = value
         if filter_params:
-            fruits = Fruit.objects.filter(**filter_params)
+            fruits = Fruit.objects.filter(**filter_params,status = 'published',confirmed = True)
         else:
-            fruits = Fruit.objects.all()
+            fruits = Fruit.objects.filter(status = 'published',confirmed = True)
     else:
-        fruits = Fruit.objects.all()
+        fruits = Fruit.objects.filter(status = 'published',confirmed = True)
     
     paginator = Paginator(fruits, 5)
     page_number = request.GET.get('page', 1)

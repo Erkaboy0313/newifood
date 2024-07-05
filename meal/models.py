@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
 from .manager import MealManger
+from django_ckeditor_5.fields import CKEditor5Field
 
 class Region(models.Model):
     slug = models.SlugField(max_length = 50, unique=True, blank=True)
@@ -38,12 +39,16 @@ class Country(models.Model):
         return super().save(*args, **kwargs)
 
 class Meal(models.Model):
-    
+
+    class Status(models.TextChoices):
+        DRAFT = "draft"
+        PUBLISHED = 'published'
+
     country = models.ForeignKey(Country,on_delete = models.SET_NULL, blank=True, null=True)
     slug = models.SlugField(max_length = 50, unique_for_date='created_time', blank=True)
     name = models.CharField(max_length = 50, blank=True, null=True)
     title = models.CharField(max_length = 200, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
+    description = CKEditor5Field(blank=True, null=True, config_name='extends')
     image = models.URLField(blank=True,null=True)
     like = models.PositiveIntegerField(default = 0)
     seen = models.PositiveIntegerField(default = 0)
@@ -53,6 +58,9 @@ class Meal(models.Model):
     updated_time = models.DateTimeField(auto_now = True)
     key_words = models.TextField(blank=True, null=True)
 
+    status = models.CharField(max_length=100,blank=True,default=Status.PUBLISHED,choices=Status.choices)
+    confirmed = models.BooleanField(default=False,blank=True,null=True)
+    
     objects = models.Manager()
     filter = MealManger()
 

@@ -4,7 +4,7 @@
 
 {% block meta %}
     <meta name="description" content="Delve into a vibrant world of fruits from across the globe. Discover juicy insights, nutritional benefits, and delicious recipes featuring an array of exotic and familiar fruits.">
-    <meta name="keywords" content="{{ country.fruit_key_words }} {{ country.region.fruit_key_words }}Fresh fruit selection, Exotic fruit varieties, Nutrient-rich fruits, Fruit recipes, Seasonal fruit guide, Tropical fruits, Citrus fruits, Berries and antioxidants, Fruit nutrition facts, Fruit desserts">
+    <meta name="keywords" content="{{ country.fruit_key_words }} {{ country.region.fruit_key_words }} Fresh fruit selection, Exotic fruit varieties, Nutrient-rich fruits, Fruit recipes, Seasonal fruit guide, Tropical fruits, Citrus fruits, Berries and antioxidants, Fruit nutrition facts, Fruit desserts">
 {% endblock %}
 
 {% block title %}
@@ -17,7 +17,17 @@
     {% endif %}
 {% endblock %}
 
-
+{% block mainHeader %}
+    <div class="row">
+        <!-- Logo Area Start -->
+        <div class="col-12">
+            <div class="logo_area text-center">
+                <a href="{% url 'home' %}" class="yummy-logo pb-0">iFood</a><br>
+                <p class="yummy-logo pt-0" style="font-size: 30px;">Explore Worldly Tastes</p><br>
+            </div>
+        </div>
+    </div>                
+{% endblock mainHeader %}
 {% block navbar %}
     <div class="row">
         <div class="col-12">

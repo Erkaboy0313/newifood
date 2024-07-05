@@ -346,6 +346,18 @@ li {
 :: 2.0 Top Header Area CSS
 -------------------- */
 
+.login_register_area{
+    height: 100% !important;
+}
+.login_register_area .login a,
+.login_register_area .register a{
+    color: rgb(34, 34, 34);
+}
+.login_register_area .login a:hover,
+.login_register_area .register a:hover{
+    color: rgb(0, 0, 0);
+}
+
 .top_header_area {
     width: 100%;
     height: 40px;

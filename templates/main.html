@@ -20,6 +20,10 @@
         <title>IFood - world foods</title>
     {% endblock %}
 
+    {% block css %}
+
+    {% endblock %}
+
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/core-img/icon.png' %}">
     <!-- Core Stylesheet -->
@@ -44,9 +48,11 @@
     </div>
 
     <!-- Background Pattern Swither -->
-    <div id="pattern-switcher">
-        Bg Pattern
-    </div>
+    {% block pattern %}
+        <div id="pattern-switcher">
+            Bg Pattern
+        </div>
+    {% endblock %}
     
     <div id="patter-close">
         <i class="fa fa-times" aria-hidden="true"></i>
@@ -57,18 +63,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-5 col-sm-6">
+                    <div class="login_register_area d-flex align-items-center">
+                        {% if not request.user.is_authenticated %}
+                            <div class="login">
+                                <a href="{% url 'user:login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
+                            </div>
+                            <div class="register">
+                                <a href="{% url 'user:register' %}" class="ml-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Sign up</a>
+                            </div>
+                            {% else %}
+                            <div class="login">
+                                <a href="{% url 'user:logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                            </div>
+                            <div class="register">
+                                <a href="{% url 'user:profile' %}" class="ml-2"><i class="fa fa-user" aria-hidden="true"></i> My profile</a>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
                 <!--  Login Register Area -->
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
-                        <div class="login_register_area  d-none">
-                            <div class="login">
-                                <a href="register.html">Sing in</a>
-                            </div>
-                            <div class="register">
-                                <a href="register.html">Sing up</a>
-                            </div>
-                        </div>
                         <!-- Search Button Area -->
                         <div class="search_button">
                             <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -98,7 +113,8 @@
                     <div class="col-12">
                         <div class="logo_area text-center">
                             <a href="{% url 'home' %}" class="yummy-logo pb-0">iFood</a><br>
-                            <p class="yummy-logo pt-0" style="font-size: 28px;">Explore Worldly Tastes</p>
+                            <p class="yummy-logo pt-0" style="font-size: 30px;">Explore Worldly Tastes</p><br>
+                            <small><p class="yummy-logo pt-0" style="font-size: 20px;">Share Your Recipes with the World!<br> Create Your Account Now and Start Publishing <a href="{% url 'user:register' %}">Sign Up</a></p></small>
                         </div>
                     </div>
                 </div>                

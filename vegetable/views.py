@@ -4,11 +4,18 @@ from .models import Vegetable
 from meal.models import Meal,Country
 from comment.models import Comment
 from django.contrib.contenttypes.models import ContentType
-from django.http import JsonResponse
+from django.http import JsonResponse,Http404
 from django.shortcuts import get_object_or_404
 
 def vegetable_details(request,region,country,year,month,day,post):
     vegetable = Vegetable.objects.get(slug = post)
+
+    if vegetable.status == 'draft':
+        if request.user.is_authenticated:
+            if not request.user.is_superuser and not vegetable.author == request.user.username:
+                raise Http404("Page not found")
+        else:
+            raise Http404("Page not found")
 
     if f'post_views_{vegetable.id}' not in request.session:
         vegetable.seen += 1
@@ -17,7 +24,8 @@ def vegetable_details(request,region,country,year,month,day,post):
 
     most_liked_vegetables = Vegetable.filter.get_most_liked_10()
     most_viewed_vegetables = Vegetable.filter.get_most_viewed_10()
-    related = Vegetable.objects.filter(type = vegetable.type)[:10]
+
+    related = Vegetable.objects.filter(season = vegetable.season,status = 'published',confirmed = True)[:10]
 
     content_type = ContentType.objects.get_for_model(vegetable)
     commnets = Comment.objects.filter(content_type = content_type,object_id = vegetable.id,reply__isnull = True)
@@ -39,14 +47,14 @@ def vegetables(request,type=None):
             if not key == 'csrfmiddlewaretoken' and value:
                 filter_params[key] = value
         if filter_params:
-            vegetables = Vegetable.objects.filter(**filter_params)
+            vegetables = Vegetable.objects.filter(**filter_params,status = 'published',confirmed = True)
         else:
-            vegetables = Vegetable.objects.all()
+            vegetables = Vegetable.objects.filter(status = 'published',confirmed = True)
     else:
         if type:
-            vegetables = Vegetable.objects.filter(type = type)
+            vegetables = Vegetable.objects.filter(type = type,status = 'published',confirmed = True)
         else:
-            vegetables = Vegetable.objects.all()
+            vegetables = Vegetable.objects.filter(status = 'published',confirmed = True)
     
     paginator = Paginator(vegetables, 5)
     page_number = request.GET.get('page', 1)
