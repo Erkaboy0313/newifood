@@ -15,7 +15,7 @@
             <!-- Single Slide -->
             <div class="welcome-single-slide">
                 <!-- Post Thumb -->
-                <img src="{{ fruit.imageURL }}" alt="{{ fruit.name }}">
+                <img class="lazy"  src="{{ fruit.imageURL }}" alt="{{ fruit.name }}">
                 <!-- Overlay Text -->
                 <div class="project_title">
                     <div class="post-date-commnents d-flex">
@@ -40,8 +40,8 @@
             <div class="row">
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
-                        <img src="{% static 'img/catagory-img/veg.jpg' %}" alt="">
+                    <div class="single_catagory " >
+                        <img class="lazy"  src="{% static 'img/catagory-img/veg.jpg' %}" alt="">
                         <div class="catagory-title">
                             <a href="{% url 'vegetable:vegetables' %}">
                                 <h5>Vegetables</h5>
@@ -50,8 +50,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
-                        <img src="{% static 'img/catagory-img/meal3.jpg' %}" alt="">
+                    <div class="single_catagory " >
+                        <img class="lazy"  src="{% static 'img/catagory-img/meal3.jpg' %}" alt="">
                         <div class="catagory-title">
                             <a href="{% url 'meal:meals' %}">
                                 <h5>Meals</h5>
@@ -60,8 +60,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
-                        <img src="{% static 'img/catagory-img/fruit.jpg' %}" alt="">
+                    <div class="single_catagory " >
+                        <img class="lazy"  src="{% static 'img/catagory-img/fruit.jpg' %}" alt="">
                         <div class="catagory-title">
                             <a href="{% url 'fruit:fruits' %}">
                                 <h5>Fruits</h5>
@@ -85,10 +85,10 @@
                             {% if forloop.counter < 5 %}
                                 <!-- Single Post -->
                                 <div class="col-12 col-md-6">
-                                    <div class="single-post wow fadeInUp" data-wow-delay=".4s">
+                                    <div class="single-post " >
                                         <!-- Post Thumb -->
                                         <div class="post-thumb">
-                                            <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                                            <img class="lazy"  src="{{ meal.imageURL }}" alt="{{ meal.name }}">
                                         </div>
                                         <!-- Post Content -->
                                         <div class="post-content">
@@ -128,10 +128,10 @@
                             {% else %}
                                 <!-- Single Post -->
                                 <div class="col-12">
-                                    <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".2s">
+                                    <div class="list-blog single-post d-sm-flex Big" >
                                         <!-- Post Thumb -->
                                         <div class="post-thumb">
-                                            <img src="{{ meal.imageURL }}" alt="{{ meal.name }}">
+                                            <img class="lazy"  src="{{ meal.imageURL }}" alt="{{ meal.name }}">
                                         </div>
                                         <!-- Post Content -->
                                         <div class="post-content">
@@ -185,16 +185,16 @@
                                 <h6>Popular Post</h6>
                             </div>
                             {% for meal in most_liked_meals %}
-                            <!-- Single Popular Post -->
-                            <div class="single-populer-post d-flex">
-                                <img src="{{ meal.imageURL }}" alt="">
-                                <div class="post-content">
-                                    <a href="{{ meal.get_absolute_url }}">
-                                        <h6>{{ meal.name }}</h6>
-                                    </a>
-                                    <p>{{ meal.created_time|date:"F d, Y" }}</p>
+                                <!-- Single Popular Post -->
+                                <div class="single-populer-post d-flex">
+                                    <img class="lazy" src="{{ meal.imageURL }}" alt="">
+                                    <div class="post-content">
+                                        <a href="{{ meal.get_absolute_url }}">
+                                            <h6>{{ meal.name }}</h6>
+                                        </a>
+                                        <p>{{ meal.created_time|date:"F d, Y" }}</p>
+                                    </div>
                                 </div>
-                            </div>
                             {% endfor %}
 
                         </div>
@@ -212,7 +212,7 @@
             <!-- Instagram Item -->
             <div class="instagram_gallery_item">
                 <!-- Instagram Thumb -->
-                <img src="{{ veg.imageURL }}" alt="{{ veg.name }}">
+                <img class="lazy"  src="{{ veg.imageURL }}" alt="{{ veg.name }}">
                 <!-- Hover -->
                 <div class="hover_overlay">
                     <div class="yummy-table">
